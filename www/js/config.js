@@ -23,15 +23,12 @@ myApp.constant('RESOURCES', (function() {
   };
 })());
 
-myApp.controller('login_controller', function($scope, $http, $location, RESOURCES) {
-  $scope.user = {};
-  console.log('RESOURCES.DOMAIN ' + RESOURCES.DOMAIN);
-  return $scope.login_submit = function() {
-    alert('b');
-    $http.post(RESOURCES.DOMAIN + "/auth/signin", $scope.login_form_data).success(function(data) {
+myApp.controller('register_controller', function($scope, $http, $location, RESOURCES) {
+  return $scope.register_submit = function() {
+    alert('c');
+    $http.post(RESOURCES.DOMAIN + "/auth/signup", $scope.register_form_data).success(function(data) {
       var logged_in_user;
-      $location.path('/register');
-      $scope.login_form_data = {};
+      $scope.register_form_data = {};
       $scope.returned = data;
       logged_in_user = data;
       console.log("user " + JSON.stringify(logged_in_user));
@@ -41,16 +38,16 @@ myApp.controller('login_controller', function($scope, $http, $location, RESOURCE
   };
 });
 
-myApp.controller('register_controller', function($scope, $http, $location, RESOURCES) {
+myApp.controller('login_controller', function($scope, $http, $location, RESOURCES) {
+  console.log('login conteroller');
   $scope.user = {};
-  console.log('register controller');
   console.log('RESOURCES.DOMAIN ' + RESOURCES.DOMAIN);
-  return $scope.register_submit = function() {
-    alert('c');
-    $http.post(RESOURCES.DOMAIN + "/auth/signup", $scope.register_form_data).success(function(data) {
+  return $scope.login_submit = function() {
+    alert('b');
+    $http.post(RESOURCES.DOMAIN + "/auth/signin", $scope.login_form_data).success(function(data) {
       var logged_in_user;
       $location.path('/register');
-      $scope.register_form_data = {};
+      $scope.login_form_data = {};
       $scope.returned = data;
       logged_in_user = data;
       console.log("user " + JSON.stringify(logged_in_user));

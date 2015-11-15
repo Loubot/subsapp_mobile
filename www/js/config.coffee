@@ -22,7 +22,26 @@ myApp.constant 'RESOURCES', do ->
     # BASIC_INFO: resource + '/api/info'
   }
 
+
+myApp.controller 'register_controller', ($scope, $http, $location, RESOURCES) ->
+  
+  $scope.register_submit = ->
+    alert 'c'
+    $http.post("#{RESOURCES.DOMAIN}/auth/signup", $scope.register_form_data).success((data) ->
+
+      
+      $scope.register_form_data = {}
+      $scope.returned = data
+      logged_in_user = data
+      console.log "user " + JSON.stringify logged_in_user
+      return
+    ).error (err) ->
+      $scope.errorMessage = err
+      return
+    return
+
 myApp.controller 'login_controller', ($scope, $http, $location, RESOURCES) ->
+  console.log 'login conteroller'
   $scope.user = {}
   console.log 'RESOURCES.DOMAIN ' + RESOURCES.DOMAIN
   $scope.login_submit = ->
@@ -40,24 +59,7 @@ myApp.controller 'login_controller', ($scope, $http, $location, RESOURCES) ->
       return
     return
 
-myApp.controller 'register_controller', ($scope, $http, $location, RESOURCES) ->
-  $scope.user = {}
-  console.log 'register controller'
-  console.log 'RESOURCES.DOMAIN ' + RESOURCES.DOMAIN
-  $scope.register_submit = ->
-    alert 'c'
-    $http.post("#{RESOURCES.DOMAIN}/auth/signup", $scope.register_form_data).success((data) ->
 
-      $location.path '/register'
-      $scope.register_form_data = {}
-      $scope.returned = data
-      logged_in_user = data
-      console.log "user " + JSON.stringify logged_in_user
-      return
-    ).error (err) ->
-      $scope.errorMessage = err
-      return
-    return
 
 
 
