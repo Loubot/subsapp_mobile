@@ -1,0 +1,37 @@
+html, body {
+    height: 100%;
+
+}
+
+body{
+  background-color: #337F76 !important;
+}
+
+.login_form{
+  color: #FFF;
+}
+
+.subs_app_logo{
+  margin: 0 auto;
+}
+
+/* Angular.js animated navigation */
+.slide-enter,
+.slide-leave
+{
+  -webkit-transition: 1000 cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+  -moz-transition: 1000 cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+  -ms-transition: 1000 cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+  -o-transition: 1000 cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+  transition: 1000 cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+}  
+.slide-enter {
+  left: 100%;
+}
+.slide-enter.slide-enter-active {
+  left: 0px;
+}      
+.slide-leave {}
+.slide-leave.slide-leave-active{
+left: -200px;
+}
