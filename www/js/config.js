@@ -25,7 +25,6 @@ myApp.constant('RESOURCES', (function() {
 
 myApp.controller('register_controller', function($scope, $http, $location, RESOURCES) {
   return $scope.register_submit = function() {
-    alert('c');
     $http.post(RESOURCES.DOMAIN + "/auth/signup", $scope.register_form_data).success(function(data) {
       var logged_in_user;
       $scope.register_form_data = {};
@@ -43,7 +42,6 @@ myApp.controller('login_controller', function($scope, $http, $location, RESOURCE
   $scope.user = {};
   console.log('RESOURCES.DOMAIN ' + RESOURCES.DOMAIN);
   return $scope.login_submit = function() {
-    alert('b');
     $http.post(RESOURCES.DOMAIN + "/auth/signin", $scope.login_form_data).success(function(data) {
       var logged_in_user;
       $location.path('/register');

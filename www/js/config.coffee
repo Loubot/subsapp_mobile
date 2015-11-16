@@ -26,7 +26,7 @@ myApp.constant 'RESOURCES', do ->
 myApp.controller 'register_controller', ($scope, $http, $location, RESOURCES) ->
   
   $scope.register_submit = ->
-    alert 'c'
+    
     $http.post("#{RESOURCES.DOMAIN}/auth/signup", $scope.register_form_data).success((data) ->
 
       
@@ -45,7 +45,7 @@ myApp.controller 'login_controller', ($scope, $http, $location, RESOURCES) ->
   $scope.user = {}
   console.log 'RESOURCES.DOMAIN ' + RESOURCES.DOMAIN
   $scope.login_submit = ->
-    alert 'b'
+    
     $http.post("#{RESOURCES.DOMAIN}/auth/signin", $scope.login_form_data).success((data) ->
 
       $location.path '/register'
