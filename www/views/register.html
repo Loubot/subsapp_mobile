@@ -29,6 +29,12 @@
       <div class="form-group text-center">
         <input type="submit" value="Register" class="btn btn-default btn btn-success btn-lg register">
         <a href="#/" class="btn btn-default btn btn-info btn-lg login">Go home</a>
+      </div> <!-- end of form-group text-center -->
+
+      <div class="register_error">
+        {{ errorMessage.invalidAttributes.email[0].message }}
+        Sign in <a href="#/">here</a>
+        
       </div>
     </form>
   </div> <!-- end of col-xs-8 -->

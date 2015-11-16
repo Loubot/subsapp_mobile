@@ -35,3 +35,20 @@ body{
 .slide-leave.slide-leave-active{
 left: -200px;
 }
+
+/*loging page*/
+
+.login_error{
+  display: none;
+  background-color: #ff3b3b;
+  color: #FFF;
+  padding:5px;
+}
+
+.register_error{
+  display: none;
+  background-color: #ff3b3b;
+  color: #FFF;
+  padding:5px;
+}
+/*end of login page*/
