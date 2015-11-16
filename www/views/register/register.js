@@ -7,8 +7,8 @@ window.myApp.controller('register_controller', function($scope, $http, $location
       $scope.register_form_data = {};
       $scope.returned = data;
       logged_in_user = data;
-      console.log("user created " + JSON.stringify(logged_in_user));
-      window.localStorage.setItem('user_jwt', JSON.stringify(logged_in_user));
+      console.log("user created " + JSON.stringify(logged_in_user.data));
+      window.localStorage.setItem('user_jwt', JSON.stringify(logged_in_user.data));
       $location.path('/user');
     }).error(function(err) {
       $('.register_error').show('slide', {

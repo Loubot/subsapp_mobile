@@ -39,7 +39,7 @@ myApp.constant 'RESOURCES', do ->
   # init()
   # return
 $(document).ready ->
-
+  # $('body').css 'width', window.innerWidth()
   
 
 

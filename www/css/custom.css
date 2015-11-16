@@ -5,6 +5,13 @@ html, body {
 
 body{
   background-color: #337F76 !important;
+  width: 100%;
+  word-wrap: break-word
+}
+
+.banner_container{
+
+  margin: 30px 0px;
 }
 
 .login_form{
@@ -36,7 +43,7 @@ body{
 left: -200px;
 }
 
-/*loging page*/
+/*login page*/
 
 .login_error{
   display: none;
@@ -52,3 +59,10 @@ left: -200px;
   padding:5px;
 }
 /*end of login page*/
+
+/*user_page*/
+
+.user_page{
+  color: #FFF;
+}
+/*end of user_page*/

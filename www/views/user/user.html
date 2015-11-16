@@ -1,3 +1,9 @@
-<div class="container-fluid" ng-controller="users_controller">
-  hello
+<div class="container-fluid user_page" ng-controller="users_controller">
+  <div class="container-fluid text-center banner_container">
+    <img src="img/corins.jpg" class="img-responsive subs_app_logo" alt="Responsive image">
+  </div>
+  <div class="col-xs-12 text-center">
+     Welcome back {{ user.user.email }} <br>
+     You have {{ user.user.tokens }} token(s) left
+  </div>
 </div>

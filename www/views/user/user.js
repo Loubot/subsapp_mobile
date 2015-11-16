@@ -2,18 +2,28 @@
 window.myApp.controller('users_controller', function($scope, $http, $location, RESOURCES) {
   var user_object;
   user_object = JSON.parse(window.localStorage.getItem('user_jwt'));
-  console.log(RESOURCES.DOMAIN);
   return $http({
     method: 'GET',
     url: RESOURCES.DOMAIN + "/user",
     headers: {
-      'Authorization': "JWT " + user_object.data.token,
+      'Authorization': "JWT " + user_object.token,
       "Content-Type": "application/json"
     }
   }).success(function(data) {
-    return console.log("Returned " + (JSON.stringify(data)));
+    if (data[0].email == null) {
+      Scope.path('/');
+    } else {
+      if (user_object.user.email !== data[0].email) {
+        console.log(user_object.user.email + " " + data[0].email);
+      } else {
+        console.log('yep');
+      }
+    }
+    $scope.user = user_object;
+    console.log('user_object from local storage ' + JSON.stringify(user_object));
+    return console.log("Returned user from server " + (JSON.stringify(data)));
   }).error(function(err) {
-    $location('/');
+    $location.path('/');
     return console.log("Error " + (JSON.stringify(err)));
   });
 });
