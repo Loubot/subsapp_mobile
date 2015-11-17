@@ -2,7 +2,7 @@
 window.myApp.controller('users_controller', function($scope, $http, $location, RESOURCES) {
   var user_object;
   user_object = JSON.parse(window.localStorage.getItem('user_jwt'));
-  return $http({
+  $http({
     method: 'GET',
     url: RESOURCES.DOMAIN + "/user",
     headers: {
@@ -26,4 +26,20 @@ window.myApp.controller('users_controller', function($scope, $http, $location, R
     $location.path('/');
     return console.log("Error " + (JSON.stringify(err)));
   });
+  return $scope.up_token = function() {
+    console.log("Trying it");
+    return $http({
+      method: 'POST',
+      url: RESOURCES.DOMAIN + "/up_tokens",
+      headers: {
+        'Authorization': "JWT " + user_object.token,
+        "Content-Type": "application/json"
+      }
+    }).success(function(data) {
+      return console.log("Seems to work " + JSON.stringify(data));
+    }).error(function(err) {
+      console.log("Update error " + JSON.stringify(err));
+      return $location.path('/');
+    });
+  };
 });
