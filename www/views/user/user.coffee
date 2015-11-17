@@ -14,22 +14,22 @@ window.myApp.controller 'users_controller', ($scope, $http, $location, RESOURCES
           console.log "#{user_object.user.email} #{data[0].email}"
         else
           console.log 'yep'
-      $scope.user = user_object
-      console.log 'user_object from local storage ' + JSON.stringify user_object
-      console.log "Returned user from server #{ JSON.stringify data }"
+      $scope.user = data[0]
+      # console.log 'user_object from local storage ' + JSON.stringify data[0]
+      console.log "Returned user from server #{ JSON.stringify data[0] }"
   ).error (err) ->
       $location.path '/'
       console.log "Error #{ JSON.stringify err }"
 
   
-  $scope.up_token = ->
-    console.log "Trying it"
+  $scope.up_token = ->    
     $http(
       method: 'POST'
       url: "#{ RESOURCES.DOMAIN }/up_tokens"
       headers: { 'Authorization': "JWT #{ user_object.token }", "Content-Type": "application/json" } 
     ).success((data) ->
-      console.log "Seems to work " + JSON.stringify data
+      console.log "Seems to work " + JSON.stringify data[0]
+      $scope.user = data[0]
     ).error (err) ->
       console.log "Update error " + JSON.stringify err
       $location.path '/'

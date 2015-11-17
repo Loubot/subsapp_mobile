@@ -19,15 +19,13 @@ window.myApp.controller('users_controller', function($scope, $http, $location, R
         console.log('yep');
       }
     }
-    $scope.user = user_object;
-    console.log('user_object from local storage ' + JSON.stringify(user_object));
-    return console.log("Returned user from server " + (JSON.stringify(data)));
+    $scope.user = data[0];
+    return console.log("Returned user from server " + (JSON.stringify(data[0])));
   }).error(function(err) {
     $location.path('/');
     return console.log("Error " + (JSON.stringify(err)));
   });
   return $scope.up_token = function() {
-    console.log("Trying it");
     return $http({
       method: 'POST',
       url: RESOURCES.DOMAIN + "/up_tokens",
@@ -36,7 +34,8 @@ window.myApp.controller('users_controller', function($scope, $http, $location, R
         "Content-Type": "application/json"
       }
     }).success(function(data) {
-      return console.log("Seems to work " + JSON.stringify(data));
+      console.log("Seems to work " + JSON.stringify(data[0]));
+      return $scope.user = data[0];
     }).error(function(err) {
       console.log("Update error " + JSON.stringify(err));
       return $location.path('/');
