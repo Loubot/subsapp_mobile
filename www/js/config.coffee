@@ -1,6 +1,6 @@
 window.logged_in_user = null
 
-window.myApp = angular.module('myApp', [ 'ngRoute', 'ngAnimate', ])
+window.myApp = angular.module('myApp', [ 'ngRoute', 'ngAnimate' ])
 angular.module('myApp.controllers', [])
 myApp.config ($routeProvider) ->
   $routeProvider.when('/',
