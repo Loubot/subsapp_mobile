@@ -2,9 +2,9 @@
 window.myApp.controller('users_controller', function($scope, $http, $location, RESOURCES) {
   var user_object;
   user_object = JSON.parse(window.localStorage.getItem('user_jwt'));
-  $http({
+  return $http({
     method: 'GET',
-    url: RESOURCES.DOMAIN + "/user",
+    url: RESOURCES.DOMAIN + "/user?id=2",
     headers: {
       'Authorization': "JWT " + user_object.token,
       "Content-Type": "application/json"
@@ -24,17 +24,5 @@ window.myApp.controller('users_controller', function($scope, $http, $location, R
   }).error(function(err) {
     $location.path('/');
     return console.log("Error " + (JSON.stringify(err)));
-  });
-  return $http({
-    method: 'GET',
-    url: RESOURCES.DOMAIN + "/all-org",
-    headers: {
-      'Authorization': "JWT " + user_object.token,
-      "Content-Type": "application/json"
-    }
-  }).then((function(response) {
-    return console.log("Get business response " + (JSON.stringify(response)));
-  }), function(errResponse) {
-    return console.log("Get business error response " + (JSON.stringify(errResponse)));
   });
 });
