@@ -4,7 +4,7 @@ window.myApp.controller 'users_controller', ($scope, $http, $location, RESOURCES
   
   $http(
     method: 'GET'
-    url: "#{RESOURCES.DOMAIN}/user?id=2"
+    url: "#{RESOURCES.DOMAIN}/user/1"
     headers: { 'Authorization': "JWT #{ user_object.token }", "Content-Type": "application/json" } 
   ).success((data) ->
       if !(data[0].email)?
