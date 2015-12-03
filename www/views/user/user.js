@@ -25,20 +25,16 @@ window.myApp.controller('users_controller', function($scope, $http, $location, R
     $location.path('/');
     return console.log("Error " + (JSON.stringify(err)));
   });
-  return $scope.up_token = function() {
-    return $http({
-      method: 'POST',
-      url: RESOURCES.DOMAIN + "/up_tokens",
-      headers: {
-        'Authorization': "JWT " + user_object.token,
-        "Content-Type": "application/json"
-      }
-    }).success(function(data) {
-      console.log("Seems to work " + JSON.stringify(data[0]));
-      return $scope.user = data[0];
-    }).error(function(err) {
-      console.log("Update error " + JSON.stringify(err));
-      return $location.path('/');
-    });
-  };
+  return $http({
+    method: 'GET',
+    url: RESOURCES.DOMAIN + "/all-org",
+    headers: {
+      'Authorization': "JWT " + user_object.token,
+      "Content-Type": "application/json"
+    }
+  }).then((function(response) {
+    return console.log("Get business response " + (JSON.stringify(response)));
+  }), function(errResponse) {
+    return console.log("Get business error response " + (JSON.stringify(errResponse)));
+  });
 });

@@ -21,19 +21,14 @@ window.myApp.controller 'users_controller', ($scope, $http, $location, RESOURCES
       $location.path '/'
       console.log "Error #{ JSON.stringify err }"
 
-  
-  $scope.up_token = ->    
-    $http(
-      method: 'POST'
-      url: "#{ RESOURCES.DOMAIN }/up_tokens"
-      headers: { 'Authorization': "JWT #{ user_object.token }", "Content-Type": "application/json" } 
-    ).success((data) ->
-      console.log "Seems to work " + JSON.stringify data[0]
-      $scope.user = data[0]
-    ).error (err) ->
-      console.log "Update error " + JSON.stringify err
-      $location.path '/'
-      
-
- 
+  $http(
+    method: 'GET'
+    url: "#{ RESOURCES.DOMAIN }/all-org"
+    headers: { 'Authorization': "JWT #{ user_object.token }", "Content-Type": "application/json" }
+  ).then ( (response) ->
+    console.log "Get business response #{ JSON.stringify response }"
     
+
+  ), ( errResponse ) ->
+    console.log "Get business error response #{ JSON.stringify errResponse }"
+    # $state.go 'login'
