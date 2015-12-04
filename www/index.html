@@ -19,44 +19,41 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html ng-app="myApp">
+<html ng-app="subzapp_mobile">
     <head >
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/bower/jquery-ui/themes/base/jquery-ui.min.css" />
         <link rel="stylesheet" type="text/css" href="css/custom.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/bower/bootstrap/dist/css/bootstrap.min.css" />
 
         <script type="text/javascript" src="cordova.js"></script>
         
         
-        <script type="text/javascript" src="js/angular.js"></script>
-        <script type="text/javascript" src="js/angular-route.min.js"></script>
-        <script type="text/javascript" src="js/angular-animate.min.js"></script>
+        <script type="text/javascript" src="assets/bower/angular/angular.js"></script>
+        <script type="text/javascript" src="assets/bower/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="assets/bower/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="js/angular-ui-router.js"></script>
+        <script type="text/javascript" src="assets/bower/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/bower/jquery-ui/jquery-ui.js"></script>        
+        <script type="text/javascript" src="assets/angular_app/scripts/app.js"></script>
+        <script type="text/javascript" src="assets/angular_app/scripts/controllers/LoginController.js"></script>
+        <script type="text/javascript" src="assets/angular_app/scripts/controllers/NavController.js"></script>
         
 
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
-        
-        <script type="text/javascript" src="js/firstGo.js"></script>
-        
-        <script type="text/javascript" src="js/config.js"></script>
-        <script type="text/javascript" src="views/login/login.js"></script>
-        <script type="text/javascript" src="views/register/register.js"></script>
-        <script type="text/javascript" src="views/user/user.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <title>SubZapp</title>
     </head>
     <body>
-      <div ng-view="" ng-animate="'slide'">
-        
+      <div ng-include="'/assets/angular_app/views/nav/nav.html'" ng-controller="NavController"></div>
+
+      <div ui-view>
+        <!-- angular app injection here -->
       </div>
-      
-      {{ returned }}
+        <!-- JJ added, ui-view is what the angular-ui-router uses instead of ng-view -->
       
     </body>
 </html>
