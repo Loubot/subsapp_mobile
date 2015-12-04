@@ -8,12 +8,9 @@ angular.module('subzapp_mobile').controller('LoginController', [
     return $scope.login_submit = function() {
       $('.login_error').css('display', 'none');
       $http.post(RESOURCES.DOMAIN + "/auth/signin", $scope.login_form_data).success(function(data) {
-        var logged_in_user;
-        $scope.login_form_data = {};
-        $scope.returned = data;
-        logged_in_user = data;
-        window.localStorage.setItem('user_jwt', JSON.stringify(logged_in_user));
-        console.log("user " + JSON.stringify(logged_in_user));
+        window.localStorage.setItem('user_token', data.token);
+        window.localStorage.setItem('user_id', data.user.id);
+        $state.go('user');
       }).error(function(err) {
         $('.login_error').show('slide', {
           direction: 'right'

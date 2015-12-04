@@ -20,16 +20,16 @@ angular.module('subzapp_mobile').controller('LoginController', [
       $('.login_error').css 'display', 'none' #remove error message if it's there
 
       $http.post("#{RESOURCES.DOMAIN}/auth/signin", $scope.login_form_data).success((data) ->
-
+        # console.log "data #{ JSON.stringify data }"
         # $location.path '/register'
 
-        $scope.login_form_data = {}
-        $scope.returned = data
-        logged_in_user = data
-        window.localStorage.setItem 'user_jwt', JSON.stringify(logged_in_user)
-        
-        console.log "user " + JSON.stringify logged_in_user
-        # $location.path '/user'
+        # $scope.login_form_data = {}
+        # $scope.returned = data
+        # logged_in_user = data
+        window.localStorage.setItem 'user_token', data.token
+        window.localStorage.setItem 'user_id', data.user.id
+       
+        $state.go 'user'
         return
       ).error (err) ->
         $('.login_error').show 'slide', { direction: 'right' }, 1000

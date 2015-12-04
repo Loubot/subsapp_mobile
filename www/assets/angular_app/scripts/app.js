@@ -9,17 +9,31 @@ angular.module('subzapp_mobile').constant('API', 'api/v1/');
 
 angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
-  return $stateProvider.state("login", {
+  $stateProvider.state("login", {
     url: "/",
     templateUrl: 'assets/angular_app/views/login/login.html',
     controller: "LoginController"
+  });
+  $stateProvider.state("register", {
+    url: "/register",
+    templateUrl: 'assets/angular_app/views/register/register.html',
+    controller: "RegisterController"
+  });
+  $stateProvider.state("user", {
+    url: "/user",
+    templateUrl: 'assets/angular_app/views/user/user.html',
+    controller: "UserController"
+  });
+  return $stateProvider.state("org", {
+    url: "/org",
+    templateUrl: 'assets/angular_app/views/org/org.html',
+    controller: "OrgController"
   });
 });
 
 angular.module('subzapp_mobile').constant('RESOURCES', (function() {
   var url;
-  console.log("url " + window.location.origin);
-  url = window.location.origin;
+  url = "http://localhost:1337";
   return {
     DOMAIN: url
   };
@@ -41,7 +55,6 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
   return {
     get_user: function() {
       var id, user_token;
-      console.log("yyyyyyyyyyyyyyyyyyy");
       user_token = window.localStorage.getItem('user_token');
       id = window.localStorage.getItem('user_id');
       return $http({
@@ -52,10 +65,9 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
           "Content-Type": "application/json"
         }
       }).success(function(data) {
-        console.log("Fetched user data " + (JSON.stringify(data)));
         if (!(data != null)) {
-          $state.go('login');
           console.log("No user data");
+          $state.go('login');
           return false;
         } else {
           window.USER = data;

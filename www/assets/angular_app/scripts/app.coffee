@@ -17,11 +17,28 @@ angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
     templateUrl : 'assets/angular_app/views/login/login.html'
     controller : "LoginController"
 
+  # register state
+  $stateProvider.state "register",
+    url : "/register"
+    templateUrl : 'assets/angular_app/views/register/register.html'
+    controller : "RegisterController"
+
+  $stateProvider.state "user",
+    url: "/user"
+    templateUrl : 'assets/angular_app/views/user/user.html'
+    controller: "UserController"
+
+  $stateProvider.state "org",
+    url: "/org"
+    templateUrl : 'assets/angular_app/views/org/org.html'
+    controller: "OrgController"
+
 
 angular.module('subzapp_mobile').constant 'RESOURCES', do ->
   # Define your variable
-  console.log "url " + window.location.origin 
-  url = window.location.origin 
+  # console.log "url " + window.location.origin 
+  # url = window.location.origin 
+  url = "http://localhost:1337"
   # Use the variable in your constants
   {
     DOMAIN: url
@@ -43,7 +60,7 @@ angular.module('subzapp_mobile').factory 'message', ->
   {
     get_user: ->
       
-      console.log "yyyyyyyyyyyyyyyyyyy"
+      # console.log "yyyyyyyyyyyyyyyyyyy"
       user_token = window.localStorage.getItem 'user_token'
       id = window.localStorage.getItem 'user_id'
 
@@ -54,10 +71,11 @@ angular.module('subzapp_mobile').factory 'message', ->
         url: "#{ RESOURCES.DOMAIN }/user/#{ id }"
         headers: { 'Authorization': "JWT #{ user_token }", "Content-Type": "application/json" }
       ).success( (data) ->
-        console.log "Fetched user data #{ JSON.stringify data }"
+        # console.log "Fetched user data #{ JSON.stringify data }"
         if !(data?)
-          $state.go 'login'
           console.log "No user data"
+          $state.go 'login'
+          
           return false
         else
           window.USER = data
