@@ -38,6 +38,11 @@ angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
     templateUrl : 'assets/angular_app/views/team/team.html'
     controller: "TeamController"
 
+  $stateProvider.state "token",
+    url: "/token"
+    templateUrl : 'assets/angular_app/views/token/token.html'
+    controller: "TokenController"
+
 
 angular.module('subzapp_mobile').constant 'RESOURCES', do ->
   # Define your variable

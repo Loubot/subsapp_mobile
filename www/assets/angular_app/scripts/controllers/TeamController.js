@@ -19,6 +19,7 @@ angular.module('subzapp_mobile').controller('TeamController', [
       });
     } else {
       console.log("User already defined");
+      $scope.is_member = check_if_member(USER, $location.search().id);
     }
     $http({
       method: 'GET',
@@ -89,5 +90,5 @@ check_if_member_after_create = function(team_mems, user_id) {
     }
     return results;
   })();
-  return users;
+  return users.length;
 };

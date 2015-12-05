@@ -25,9 +25,11 @@ angular.module('subzapp_mobile').controller('TeamController', [
       ), ( errResponse ) ->
         console.log "User get error #{ JSON.stringify errResponse }"
         $state.go 'login'
+
         return false
     else
       console.log "User already defined"
+      $scope.is_member = check_if_member(USER, $location.search().id)
 
 
     $http(
@@ -74,4 +76,4 @@ check_if_member_after_create = ( team_mems, user_id )->
 
   users = ( mem for mem in team_mems when mem.id is user_id )
   # console.log "team #{ JSON.stringify users }"
-  return users
+  return users.length
