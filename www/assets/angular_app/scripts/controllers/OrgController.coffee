@@ -36,7 +36,8 @@ angular.module('subzapp_mobile').controller('OrgController', [
       params: 
         org_id: $location.search().id
     ).success( (org) ->
-      console.log "Fetched user data #{ JSON.stringify org }"
+      console.log "Fetched org data #{ JSON.stringify org }"
+      $scope.teams = org.teams
       $scope.org = org
       # 
     ).error (err) ->

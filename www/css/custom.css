@@ -6,7 +6,8 @@ html, body {
 body{
   background-color: #337F76 !important;
   width: 100%;
-  word-wrap: break-word
+  word-wrap: break-word;
+  color: #FFF !important;
 }
 
 .banner_container{
@@ -66,6 +67,7 @@ left: -200px;
 }
 
 .example-animate-container {
+  padding: 0px;
   /*color: #111;*/
   /*background:white;*/
   /*border:1px solid black*/;
@@ -74,8 +76,7 @@ left: -200px;
   /*padding:0 10px;*/
 }
 
-.example-animate-container li {
-  color: #FFF;
+.example-animate-container li {  
   background:white;
   border:1px solid black;
   padding: 5px;

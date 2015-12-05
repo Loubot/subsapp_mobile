@@ -28,7 +28,8 @@ angular.module('subzapp_mobile').controller('OrgController', [
         org_id: $location.search().id
       }
     }).success(function(org) {
-      console.log("Fetched user data " + (JSON.stringify(org)));
+      console.log("Fetched org data " + (JSON.stringify(org)));
+      $scope.teams = org.teams;
       return $scope.org = org;
     }).error(function(err) {
       return console.log("single org error " + (JSON.stringify(err)));

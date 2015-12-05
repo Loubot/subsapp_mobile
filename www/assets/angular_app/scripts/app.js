@@ -24,10 +24,15 @@ angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvi
     templateUrl: 'assets/angular_app/views/user/user.html',
     controller: "UserController"
   });
-  return $stateProvider.state("org", {
+  $stateProvider.state("org", {
     url: "/org",
     templateUrl: 'assets/angular_app/views/org/org.html',
     controller: "OrgController"
+  });
+  return $stateProvider.state("team", {
+    url: "/team",
+    templateUrl: 'assets/angular_app/views/team/team.html',
+    controller: "TeamController"
   });
 });
 
