@@ -34,6 +34,11 @@ angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvi
     templateUrl: 'assets/angular_app/views/org/org.html',
     controller: "OrgController"
   });
+  $stateProvider.state("all_org", {
+    url: "/all-org",
+    templateUrl: 'assets/angular_app/views/org/all-org.html',
+    controller: "AllOrgController"
+  });
   $stateProvider.state("team", {
     url: "/team",
     templateUrl: 'assets/angular_app/views/team/team.html',
@@ -90,7 +95,6 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
           "Content-Type": "application/json"
         }
       }).success(function(data) {
-        console.log("Fetched user data " + (JSON.stringify(data)));
         if (!(data != null)) {
           console.log("No user data");
           $state.go('login');

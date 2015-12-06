@@ -7,21 +7,12 @@ angular.module('subzapp_mobile').controller('TeamController', [
     var user_token;
     console.log("Team Controller");
     user_token = window.localStorage.getItem('user_token');
-    if (!(window.USER != null)) {
-      user.get_user().then((function(res) {
-        console.log("Got user");
-        $scope.is_member = check_if_member(USER, $location.search().id);
-        return res;
-      }), function(errResponse) {
-        console.log("User get error " + (JSON.stringify(errResponse)));
-        window.USER = null;
-        $state.go('login');
-        return false;
-      });
-    } else {
-      console.log("User already defined");
-      $scope.is_member = check_if_member(USER, $location.search().id);
-    }
+    user.get_user().then((function(res) {
+      return $scope.is_member = check_if_member(USER, $location.search().id);
+    }), function(err) {
+      window.USER = null;
+      return $state.go('login');
+    });
     $http({
       method: 'GET',
       url: RESOURCES.DOMAIN + "/get-team",
@@ -33,7 +24,9 @@ angular.module('subzapp_mobile').controller('TeamController', [
         team_id: $location.search().id
       }
     }).then((function(res) {
-      return $scope.team = res.data[0];
+      console.log("Got team " + (JSON.stringify(res)));
+      $scope.team = res.data[0];
+      return $scope.events = ['hell;', 'bye'];
     }), function(errResponse) {
       return console.log("Get team error " + (JSON.stringify(errResponse)));
     });

@@ -11,25 +11,22 @@ angular.module('subzapp_mobile').controller('OrgController', [
   'RESOURCES'
 
   ($scope, $state, $http, $window, $location, message, user, RESOURCES ) ->
+    user_token = window.localStorage.getItem 'user_token'
+    console.log "Org Controller"
 
-    console.log "Org Controllersss"
+    user.get_user().then ( (res) ->
+      # console.log "Got user #{ JSON.stringify res }"
+              
+      $scope.org = window.USER.org
+      
+    ), ( err ) ->
+      window.USER = null
+      $state.go 'login'
 
-    if !(window.USER?)
-      user.get_user().then ( (res) ->
-        # console.log "User set to #{ JSON.stringify res }"
-        # console.log "user controller #{JSON.stringify window.USER }"
-        # $scope.orgs = window.USER.orgs
-        return res
-      ), ( errResponse ) ->
-        console.log "User get error #{ JSON.stringify errResponse }"
-        window.USER = null
-        $state.go 'login'
-        return false
-    else
-      console.log "User already defined"
+
 
     console.log "params " + JSON.stringify $location.search().id
-    user_token = window.localStorage.getItem 'user_token'
+    
     $http(
       method: 'GET'
       url: "#{ RESOURCES.DOMAIN }/get-single-org"
@@ -43,7 +40,7 @@ angular.module('subzapp_mobile').controller('OrgController', [
       # 
     ).error (err) ->
       console.log "single org error #{ JSON.stringify err }"
-      # $state.go 'login'
+      $state.go 'login'
 
 
 ])

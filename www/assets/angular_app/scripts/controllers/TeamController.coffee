@@ -14,23 +14,14 @@ angular.module('subzapp_mobile').controller('TeamController', [
     console.log "Team Controller"
     user_token = window.localStorage.getItem 'user_token'
 
-    if !(window.USER?)
-      user.get_user().then ( (res) ->
-        console.log "Got user"
-        # console.log "User set to #{ JSON.stringify res }"
-        # console.log "user controller #{JSON.stringify window.USER }"
-        # $scope.orgs = window.USER.orgs
-        $scope.is_member = check_if_member(USER, $location.search().id)
-        return res
-      ), ( errResponse ) ->
-        console.log "User get error #{ JSON.stringify errResponse }"
-        window.USER = null
-        $state.go 'login'
-
-        return false
-    else
-      console.log "User already defined"
+    user.get_user().then ( (res) ->
+      # console.log "Got user #{ JSON.stringify res }"
       $scope.is_member = check_if_member(USER, $location.search().id)
+      
+    ), ( err ) ->
+      window.USER = null
+      $state.go 'login'
+
 
 
     $http(
@@ -40,8 +31,9 @@ angular.module('subzapp_mobile').controller('TeamController', [
         params:
           team_id: $location.search().id
       ).then ( (res) ->
-        # console.log "Got team #{ JSON.stringify res }"
+        console.log "Got team #{ JSON.stringify res }"
         $scope.team = res.data[0]
+        $scope.events = ['hell;', 'bye']
       ), ( errResponse ) ->
         console.log "Get team error #{ JSON.stringify errResponse }"
 

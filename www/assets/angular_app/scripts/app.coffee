@@ -37,6 +37,11 @@ angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
     url: "/org"
     templateUrl : 'assets/angular_app/views/org/org.html'
     controller: "OrgController"
+    
+  $stateProvider.state "all_org",
+    url: "/all-org"
+    templateUrl : 'assets/angular_app/views/org/all-org.html'
+    controller: "AllOrgController"
 
   $stateProvider.state "team",
     url: "/team"
@@ -93,7 +98,7 @@ angular.module('subzapp_mobile').factory 'message', ->
         url: "#{ RESOURCES.DOMAIN }/user/#{ id }"
         headers: { 'Authorization': "JWT #{ user_token }", "Content-Type": "application/json" }
       ).success( (data) ->
-        console.log "Fetched user data #{ JSON.stringify data }"
+        # console.log "Fetched user data #{ JSON.stringify data }"
         if !(data?)
           console.log "No user data"
           $state.go 'login'
