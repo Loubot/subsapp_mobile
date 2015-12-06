@@ -52,6 +52,12 @@ left: -200px;
 }
 /*end of user_page*/
 
+/* edit user page*/
+.token_container{
+  
+}
+/* end of edit user page*/
+
 .message{
   display: none;
 }
@@ -111,5 +117,5 @@ left: -200px;
 }
 
 .black_text{
-  color: #111;
+  color: #5e5e5e;
 }

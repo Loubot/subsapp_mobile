@@ -14,7 +14,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
     user_token = window.localStorage.getItem 'user_token'
     if !(window.USER?)
       user.get_user().then ( (res) ->
-        # console.log "Got user #{ JSON.stringify res }"
+        # console.log res
                 
         $scope.orgs = window.USER.orgs
         $scope.user = USER
@@ -32,6 +32,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       console.log response
 
     Stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
+
     $('#payment-form').submit (event) ->
       console.log Stripe
       event.preventDefault()
@@ -41,6 +42,8 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       Stripe.card.createToken $form, stripeResponseHandler
       # Prevent the form from submitting with the default action
       false
+
+
     $scope.edit_user = ->
       # console.log $scope.user
       # $scope.user.user_id = USER.id
@@ -58,6 +61,9 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       ), ( errResponse ) ->
         console.log "Edit user error #{ JSON.stringify errResponse }"
         message.errir JSON.stringify errResponse
+
+    $scope.stripe_submit = ->
+      console.log 'stripe'
 
 
 ])

@@ -93,7 +93,7 @@ angular.module('subzapp_mobile').factory 'message', ->
         url: "#{ RESOURCES.DOMAIN }/user/#{ id }"
         headers: { 'Authorization': "JWT #{ user_token }", "Content-Type": "application/json" }
       ).success( (data) ->
-        # console.log "Fetched user data #{ JSON.stringify data }"
+        console.log "Fetched user data #{ JSON.stringify data }"
         if !(data?)
           console.log "No user data"
           $state.go 'login'

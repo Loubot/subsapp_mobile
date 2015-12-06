@@ -33,7 +33,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       Stripe.card.createToken($form, stripeResponseHandler);
       return false;
     });
-    return $scope.edit_user = function() {
+    $scope.edit_user = function() {
       return $http({
         method: 'POST',
         url: RESOURCES.DOMAIN + "/edit-user",
@@ -53,6 +53,9 @@ angular.module('subzapp_mobile').controller('EditUserController', [
         console.log("Edit user error " + (JSON.stringify(errResponse)));
         return message.errir(JSON.stringify(errResponse));
       });
+    };
+    return $scope.stripe_submit = function() {
+      return console.log('stripe');
     };
   }
 ]);

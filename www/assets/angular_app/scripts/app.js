@@ -90,6 +90,7 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
           "Content-Type": "application/json"
         }
       }).success(function(data) {
+        console.log("Fetched user data " + (JSON.stringify(data)));
         if (!(data != null)) {
           console.log("No user data");
           $state.go('login');
