@@ -2,7 +2,7 @@
 'use strict';
 angular.module('subzapp_mobile').controller('EditUserController', [
   '$scope', '$state', '$http', '$window', 'message', 'user', 'RESOURCES', function($scope, $state, $http, $window, message, user, RESOURCES) {
-    var user_token;
+    var stripeResponseHandler, user_token;
     console.log('User Controller');
     console.log('User Controller');
     user_token = window.localStorage.getItem('user_token');
@@ -20,6 +20,20 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       $scope.orgs = window.USER.orgs;
       $scope.user = USER;
     }
+    stripeResponseHandler = function(status, response) {
+      console.log(status);
+      return console.log(response);
+    };
+    Stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra');
+    $('#payment-form').submit(function(event) {
+      var $form;
+      console.log(Stripe);
+      event.preventDefault();
+      $form = $(this);
+      $form.find('button').prop('disabled', true);
+      Stripe.card.createToken($form, stripeResponseHandler);
+      return false;
+    });
     return $scope.edit_user = function() {
       return $http({
         method: 'POST',
