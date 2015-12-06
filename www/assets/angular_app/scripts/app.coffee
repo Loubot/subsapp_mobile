@@ -28,6 +28,11 @@ angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
     templateUrl : 'assets/angular_app/views/user/user.html'
     controller: "UserController"
 
+  $stateProvider.state "edit-user",
+    url: "/edit-user"
+    templateUrl : 'assets/angular_app/views/user/edit_user.html'
+    controller: "EditUserController"
+
   $stateProvider.state "org",
     url: "/org"
     templateUrl : 'assets/angular_app/views/org/org.html'
@@ -58,13 +63,20 @@ angular.module('subzapp_mobile').constant 'RESOURCES', do ->
 
 
 angular.module('subzapp_mobile').factory 'message', ->
-  { error: (mes) ->
-    $('.login_error').text mes
-    $('.login_error').show 'slide', { direction: 'right' }, 1000
+  error: (mes) ->
+    $('.message').removeClass 'success_message'
+    $('.message').addClass 'error_message'
+    $('.message').text mes
+    $('.message').show 'slide', { direction: 'right' }, 1000
     # alert "This is an error #{ mes }"
     # return
- }
+  success: ( mes ) ->
+    $('.message').removeClass 'error_message'
+    $('.message').addClass 'success_message'
+    $('.message').text mes
+    $('.message').show 'slide', { direction: 'right' }, 1000
 
+    
  angular.module('subzapp_mobile').service 'user', ($http, $state, RESOURCES ) ->
   console.log "user service"
   {

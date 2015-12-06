@@ -52,15 +52,16 @@ left: -200px;
 }
 /*end of user_page*/
 
-.login_error{
+.message{
   display: none;
-  background-color: #ff3b3b;
-  /*color: #FFF;*/
-  padding:5px;
 }
 
-.register_error{
-  display: none;
+.success_message{  
+  background-color: #00b100;
+  padding: 5px;
+}
+
+.error_message{
   background-color: #ff3b3b;
   /*color: #FFF;*/
   padding:5px;

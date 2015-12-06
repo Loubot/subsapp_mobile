@@ -24,6 +24,7 @@ angular.module('subzapp_mobile').controller('TeamController', [
         return res
       ), ( errResponse ) ->
         console.log "User get error #{ JSON.stringify errResponse }"
+        window.USER = null
         $state.go 'login'
 
         return false
@@ -66,7 +67,7 @@ angular.module('subzapp_mobile').controller('TeamController', [
   
         
 ])
-#return true if user is already a member of the team. This drives ng-hide="is_member" in the team.html view
+#return truthy if user is already a member of the team. This drives ng-hide="is_member" in the team.html view
 check_if_member = (user, team_id) ->  
   team = (team for team in user.user_teams when team.id is parseInt(team_id) )
   return team.length

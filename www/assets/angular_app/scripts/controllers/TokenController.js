@@ -9,6 +9,7 @@ angular.module('subzapp_mobile').controller('TokenController', [
         return console.log("User set to " + (JSON.stringify(res)));
       }), function(errResponse) {
         console.log("User get error " + (JSON.stringify(errResponse)));
+        window.USER = null;
         $state.go('login');
         return false;
       });

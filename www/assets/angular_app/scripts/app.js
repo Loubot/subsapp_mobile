@@ -24,6 +24,11 @@ angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvi
     templateUrl: 'assets/angular_app/views/user/user.html',
     controller: "UserController"
   });
+  $stateProvider.state("edit-user", {
+    url: "/edit-user",
+    templateUrl: 'assets/angular_app/views/user/edit_user.html',
+    controller: "EditUserController"
+  });
   $stateProvider.state("org", {
     url: "/org",
     templateUrl: 'assets/angular_app/views/org/org.html',
@@ -52,8 +57,18 @@ angular.module('subzapp_mobile').constant('RESOURCES', (function() {
 angular.module('subzapp_mobile').factory('message', function() {
   return {
     error: function(mes) {
-      $('.login_error').text(mes);
-      return $('.login_error').show('slide', {
+      $('.message').removeClass('success_message');
+      $('.message').addClass('error_message');
+      $('.message').text(mes);
+      return $('.message').show('slide', {
+        direction: 'right'
+      }, 1000);
+    },
+    success: function(mes) {
+      $('.message').removeClass('error_message');
+      $('.message').addClass('success_message');
+      $('.message').text(mes);
+      return $('.message').show('slide', {
         direction: 'right'
       }, 1000);
     }

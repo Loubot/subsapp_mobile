@@ -20,6 +20,7 @@ angular.module('subzapp_mobile').controller('TokenController', [
         # return res
       ), ( errResponse ) ->
         console.log "User get error #{ JSON.stringify errResponse }"
+        window.USER = null
         $state.go 'login'
         return false
     else

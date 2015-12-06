@@ -16,6 +16,7 @@ angular.module('subzapp_mobile').controller('LoginController', [
           direction: 'right'
         }, 1000);
         $scope.errorMessage = err;
+        window.USER = null;
         console.log("error!!!!!" + JSON.stringify(err));
       });
     };
