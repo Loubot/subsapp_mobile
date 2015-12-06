@@ -3,7 +3,7 @@ window.logged_in_user = null;
 
 'use strict';
 
-angular.module('subzapp_mobile', ['ngAnimate', 'ui.router', 'ngRoute']);
+angular.module('subzapp_mobile', ['ngAnimate', 'ui.router', 'ngRoute', 'angular-stripe']);
 
 angular.module('subzapp_mobile').constant('API', 'api/v1/');
 

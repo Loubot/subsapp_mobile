@@ -8,7 +8,8 @@ angular.module('subzapp_mobile').controller('EditUserController', [
   'message'
   'user'
   'RESOURCES'
-  ( $scope, $state, $http, $window, message, user, RESOURCES ) ->
+  'stripe'
+  ( $scope, $state, $http, $window, message, user, RESOURCES, stripe ) ->
     console.log 'EditUser Controller'
     
     user_token = window.localStorage.getItem 'user_token'
@@ -26,22 +27,6 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       console.log 'else'
       $scope.orgs = window.USER.orgs
       $scope.user = USER
-
-    stripeResponseHandler = (status, response) ->
-      console.log status
-      console.log response
-
-    Stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
-
-    $('#payment-form').submit (event) ->
-      console.log Stripe
-      event.preventDefault()
-      $form = $(this)
-      # Disable the submit button to prevent repeated clicks
-      $form.find('button').prop 'disabled', true
-      Stripe.card.createToken $form, stripeResponseHandler
-      # Prevent the form from submitting with the default action
-      false
 
 
     $scope.edit_user = ->
@@ -64,6 +49,13 @@ angular.module('subzapp_mobile').controller('EditUserController', [
 
     $scope.stripe_submit = ->
       console.log 'stripe'
+
+
+    ### Stripe payments ###
+    
+    stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
+    console.log stripe
+    # stripeProvider.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
 
 
 ])

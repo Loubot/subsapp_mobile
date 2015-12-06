@@ -4,6 +4,7 @@ angular.module('subzapp_mobile', [
     'ngAnimate'
     'ui.router'
     'ngRoute'
+    'angular-stripe'
 ])
 
 angular.module('subzapp_mobile').constant('API', 'api/v1/')
