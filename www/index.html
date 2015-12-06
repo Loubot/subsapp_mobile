@@ -40,7 +40,7 @@
         <script type="text/javascript" src="assets/bower/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="assets/bower/jquery-ui/jquery-ui.js"></script>
         <script type="text/javascript" src="assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/stripe-debug.js"></script>
         <script type="text/javascript" src="assets/angular_app/scripts/app.js"></script>
         <script type="text/javascript" src="assets/angular_app/scripts/controllers/LoginController.js"></script>
         <script type="text/javascript" src="assets/angular_app/scripts/controllers/RegisterController.js"></script>
@@ -81,8 +81,8 @@
           <span> / </span>
           <input type="text" size="4" data-stripe="exp-year"/>
         </div>
-
-        <button type="submit">Submit Payment</button>
+        <!-- <input type="submit" value="go" style="background:url(img/stripe.png) no-repeat;" class="img-responsive subs_app_logo"/> -->
+        <input type="image" src="img/stripe.png" alt="Submit Form" />
       </form>
       <div ng-include="'/assets/angular_app/views/nav/nav.html'" ng-controller="NavController"></div>
 
