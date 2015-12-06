@@ -9,8 +9,8 @@ angular.module('subzapp_mobile').controller('EditUserController', [
   'user'
   'RESOURCES'
   ( $scope, $state, $http, $window, message, user, RESOURCES ) ->
-    console.log 'User Controller'
-    console.log 'User Controller'
+    console.log 'EditUser Controller'
+    
     user_token = window.localStorage.getItem 'user_token'
     if !(window.USER?)
       user.get_user().then ( (res) ->

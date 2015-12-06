@@ -109,3 +109,7 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
 window.init = function() {
   return console.log("Hello");
 };
+
+$(document).on('click', '#subzapp_nav', function() {
+  return $('.subzapp_nav_collapse').collapse('hide');
+});

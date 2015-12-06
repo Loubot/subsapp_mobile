@@ -3,8 +3,7 @@
 angular.module('subzapp_mobile').controller('EditUserController', [
   '$scope', '$state', '$http', '$window', 'message', 'user', 'RESOURCES', function($scope, $state, $http, $window, message, user, RESOURCES) {
     var stripeResponseHandler, user_token;
-    console.log('User Controller');
-    console.log('User Controller');
+    console.log('EditUser Controller');
     user_token = window.localStorage.getItem('user_token');
     if (!(window.USER != null)) {
       user.get_user().then((function(res) {

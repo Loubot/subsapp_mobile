@@ -111,3 +111,7 @@ angular.module('subzapp_mobile').factory 'message', ->
 
 window.init = ->
   console.log "Hello"
+
+
+$(document).on 'click', '#subzapp_nav', ->
+  $('.subzapp_nav_collapse').collapse('hide')
