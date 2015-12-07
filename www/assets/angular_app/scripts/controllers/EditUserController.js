@@ -19,7 +19,6 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       $scope.orgs = window.USER.orgs;
       $scope.user = USER;
     }
-    $('#myModal').modal('show');
     $scope.edit_user = function() {
       return $http({
         method: 'POST',
@@ -41,19 +40,55 @@ angular.module('subzapp_mobile').controller('EditUserController', [
         return message.errir(JSON.stringify(errResponse));
       });
     };
-    $scope.stripe_submit = function() {
-      console.log('stripe');
 
-      /* Stripe payments */
+    /* Stripe payments */
+    $scope.card = {
+      amount: 1,
+      number: 4242424242424242,
+      cvc: 123,
+      exp_month: 12,
+      exp_year: 17
+    };
+    $scope.stripe_submit = function() {
+      var amount, stripe_response;
+      console.log('stripe');
+      console.log($scope.card);
+      amount = $scope.card.amount;
+      delete $scope.card.amount;
+      console.log("amount " + amount + " ");
+      stripe_response = function(status, token) {
+        console.log(status);
+        console.log(token);
+        console.log("amount " + amount);
+        return $http({
+          method: 'POST',
+          url: RESOURCES.DOMAIN + "/create-payment",
+          headers: {
+            'Authorization': "JWT " + user_token,
+            "Content-Type": "application/json"
+          },
+          data: {
+            stripe_token: token.id,
+            amount: amount,
+            user_id: USER.id
+          }
+        }).then((function(res) {
+          return console.log("res " + (JSON.stringify(res)));
+        }), function(errResponse) {
+          return console.log("Create payment error " + (JSON.stringify(errResponse)));
+        });
+      };
       stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra');
+      stripe.card.createToken($scope.card, stripe_response);
       return console.log(stripe);
     };
-    return $scope.add_validation = function(e) {
+    $scope.add_validation = function(e) {
       var t;
       t = e.target;
       $(t).addClass('validation');
       console.log(e);
       return true;
     };
+    return $('#myModal').modal('show');
   }
 ]);
