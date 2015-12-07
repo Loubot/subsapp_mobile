@@ -19,6 +19,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       $scope.orgs = window.USER.orgs;
       $scope.user = USER;
     }
+    $('#myModal').modal('show');
     $scope.edit_user = function() {
       return $http({
         method: 'POST',
@@ -41,11 +42,18 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       });
     };
     $scope.stripe_submit = function() {
-      return console.log('stripe');
-    };
+      console.log('stripe');
 
-    /* Stripe payments */
-    stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra');
-    return console.log(stripe);
+      /* Stripe payments */
+      stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra');
+      return console.log(stripe);
+    };
+    return $scope.add_validation = function(e) {
+      var t;
+      t = e.target;
+      $(t).addClass('validation');
+      console.log(e);
+      return true;
+    };
   }
 ]);

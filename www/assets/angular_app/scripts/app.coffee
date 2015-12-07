@@ -5,9 +5,14 @@ angular.module('subzapp_mobile', [
     'ui.router'
     'ngRoute'
     'angular-stripe'
+    'credit-cards'
 ])
 
 angular.module('subzapp_mobile').constant('API', 'api/v1/')
+
+angular.module('subzapp_mobile').filter 'yesNo', ->
+  (boolean) ->
+    if boolean then 'Yes' else 'No'
 
 angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
 

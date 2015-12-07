@@ -28,7 +28,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       $scope.orgs = window.USER.orgs
       $scope.user = USER
 
-
+    $('#myModal').modal 'show'
     $scope.edit_user = ->
       # console.log $scope.user
       # $scope.user.user_id = USER.id
@@ -51,11 +51,16 @@ angular.module('subzapp_mobile').controller('EditUserController', [
       console.log 'stripe'
 
 
-    ### Stripe payments ###
-    
-    stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
-    console.log stripe
+      ### Stripe payments ###
+      
+      stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
+      console.log stripe
     # stripeProvider.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra')
 
+    $scope.add_validation = (e) ->
+      t = e.target
+      $(t).addClass('validation')
+      console.log e
+      return true
 
 ])

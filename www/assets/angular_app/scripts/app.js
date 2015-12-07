@@ -3,9 +3,19 @@ window.logged_in_user = null;
 
 'use strict';
 
-angular.module('subzapp_mobile', ['ngAnimate', 'ui.router', 'ngRoute', 'angular-stripe']);
+angular.module('subzapp_mobile', ['ngAnimate', 'ui.router', 'ngRoute', 'angular-stripe', 'credit-cards']);
 
 angular.module('subzapp_mobile').constant('API', 'api/v1/');
+
+angular.module('subzapp_mobile').filter('yesNo', function() {
+  return function(boolean) {
+    if (boolean) {
+      return 'Yes';
+    } else {
+      return 'No';
+    }
+  };
+});
 
 angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
