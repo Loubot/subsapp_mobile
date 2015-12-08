@@ -50,12 +50,12 @@ angular.module('subzapp_mobile').controller('EditUserController', [
 
 
     ### Stripe payments ###
-    $scope.card = 
-      amount: 1 # set amount to 1 as default
-      number: 4242424242424242
-      cvc: 123
-      exp_month: 12
-      exp_year: 17
+    # $scope.card = 
+    #   amount: 1 # set amount to 1 as default
+    #   number: 4242424242424242
+    #   cvc: 123
+    #   exp_month: 12
+    #   exp_year: 17
 
     $scope.stripe_submit = ->
       console.log 'stripe'
@@ -81,7 +81,8 @@ angular.module('subzapp_mobile').controller('EditUserController', [
             amount: amount
             user_id: USER.id
         ).then ( ( res ) ->
-          console.log "res #{ JSON.stringify res }"
+          # console.log "res #{ JSON.stringify res }"
+          console.log res
         ), ( errResponse ) ->
           console.log "Create payment error #{ JSON.stringify errResponse }"
 

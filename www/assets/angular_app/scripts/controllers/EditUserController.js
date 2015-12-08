@@ -42,13 +42,6 @@ angular.module('subzapp_mobile').controller('EditUserController', [
     };
 
     /* Stripe payments */
-    $scope.card = {
-      amount: 1,
-      number: 4242424242424242,
-      cvc: 123,
-      exp_month: 12,
-      exp_year: 17
-    };
     $scope.stripe_submit = function() {
       var amount, stripe_response;
       console.log('stripe');
@@ -73,7 +66,7 @@ angular.module('subzapp_mobile').controller('EditUserController', [
             user_id: USER.id
           }
         }).then((function(res) {
-          return console.log("res " + (JSON.stringify(res)));
+          return console.log(res);
         }), function(errResponse) {
           return console.log("Create payment error " + (JSON.stringify(errResponse)));
         });
