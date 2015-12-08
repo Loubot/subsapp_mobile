@@ -66,9 +66,12 @@ angular.module('subzapp_mobile').controller('EditUserController', [
             user_id: USER.id
           }
         }).then((function(res) {
-          return console.log(res);
+          console.log(res);
+          return message.success(res.data.message);
         }), function(errResponse) {
-          return console.log("Create payment error " + (JSON.stringify(errResponse)));
+          console.log("Create payment error " + (JSON.stringify(errResponse)));
+          console.log(errResponse);
+          return message.error(errResponse.data);
         });
       };
       stripe.setPublishableKey('pk_test_bfa4lYmoaJZTm9d94qBTEEra');

@@ -59,6 +59,7 @@ left: -200px;
 /* end of edit user page*/
 
 .message{
+  height: auto;
   display: none;
 }
 

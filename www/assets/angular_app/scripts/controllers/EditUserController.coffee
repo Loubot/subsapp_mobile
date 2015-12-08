@@ -83,8 +83,11 @@ angular.module('subzapp_mobile').controller('EditUserController', [
         ).then ( ( res ) ->
           # console.log "res #{ JSON.stringify res }"
           console.log res
+          message.success res.data.message
         ), ( errResponse ) ->
           console.log "Create payment error #{ JSON.stringify errResponse }"
+          console.log errResponse
+          message.error errResponse.data
 
         # stripe.customers.create(
         #   source: response
