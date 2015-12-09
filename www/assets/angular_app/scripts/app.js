@@ -24,10 +24,30 @@ angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvi
     templateUrl: 'assets/angular_app/views/user/user.html',
     controller: "UserController"
   });
-  return $stateProvider.state("org", {
+  $stateProvider.state("edit-user", {
+    url: "/edit-user",
+    templateUrl: 'assets/angular_app/views/user/edit_user.html',
+    controller: "EditUserController"
+  });
+  $stateProvider.state("org", {
     url: "/org",
     templateUrl: 'assets/angular_app/views/org/org.html',
     controller: "OrgController"
+  });
+  $stateProvider.state("all_org", {
+    url: "/all-org",
+    templateUrl: 'assets/angular_app/views/org/all-org.html',
+    controller: "AllOrgController"
+  });
+  $stateProvider.state("team", {
+    url: "/team",
+    templateUrl: 'assets/angular_app/views/team/team.html',
+    controller: "TeamController"
+  });
+  return $stateProvider.state("token", {
+    url: "/token",
+    templateUrl: 'assets/angular_app/views/token/token.html',
+    controller: "TokenController"
   });
 });
 
@@ -42,8 +62,18 @@ angular.module('subzapp_mobile').constant('RESOURCES', (function() {
 angular.module('subzapp_mobile').factory('message', function() {
   return {
     error: function(mes) {
-      $('.login_error').text(mes);
-      return $('.login_error').show('slide', {
+      $('.message').removeClass('success_message');
+      $('.message').addClass('error_message');
+      $('.message').text(mes);
+      return $('.message').show('slide', {
+        direction: 'right'
+      }, 1000);
+    },
+    success: function(mes) {
+      $('.message').removeClass('error_message');
+      $('.message').addClass('success_message');
+      $('.message').text(mes);
+      return $('.message').show('slide', {
         direction: 'right'
       }, 1000);
     }
@@ -84,3 +114,7 @@ angular.module('subzapp_mobile').service('user', function($http, $state, RESOURC
 window.init = function() {
   return console.log("Hello");
 };
+
+$(document).on('click', '#subzapp_nav', function() {
+  return $('.subzapp_nav_collapse').collapse('hide');
+});

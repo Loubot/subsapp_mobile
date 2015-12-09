@@ -16,10 +16,8 @@ angular.module('subzapp_mobile').controller('RegisterController', [
         return $state.go('user');
       }), function(errResponse) {
         console.log("Registration failed " + (JSON.stringify(errResponse.data.invalidAttributes.email[0].message)));
-        $scope.errMessage = errResponse;
-        $('.register_error').show('slide', {
-          direction: 'right'
-        }, 1000);
+        window.USER = null;
+        message.error(errResponse);
         return $state.go('login');
       });
     };

@@ -15,12 +15,13 @@ angular.module('subzapp_mobile').controller('UserController', [
 
     if !(window.USER?)
       user.get_user().then ( (res) ->
-        # console.log "User set to #{ JSON.stringify res }"
+        console.log "User set to #{ JSON.stringify res }"
         # console.log "user controller #{JSON.stringify window.USER }"
         # $scope.orgs = window.USER.orgs
         return res
       ), ( errResponse ) ->
         console.log "User get error #{ JSON.stringify errResponse }"
+        window.USER = null
         $state.go 'login'
         return false
     else

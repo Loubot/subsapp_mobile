@@ -6,9 +6,11 @@ angular.module('subzapp_mobile').controller('UserController', [
     console.log("User Controller");
     if (!(window.USER != null)) {
       user.get_user().then((function(res) {
+        console.log("User set to " + (JSON.stringify(res)));
         return res;
       }), function(errResponse) {
         console.log("User get error " + (JSON.stringify(errResponse)));
+        window.USER = null;
         $state.go('login');
         return false;
       });

@@ -3,20 +3,15 @@
 angular.module('subzapp_mobile').controller('OrgController', [
   '$scope', '$state', '$http', '$window', '$location', 'message', 'user', 'RESOURCES', function($scope, $state, $http, $window, $location, message, user, RESOURCES) {
     var user_token;
-    console.log("Org Controllersss");
-    if (!(window.USER != null)) {
-      user.get_user().then((function(res) {
-        return res;
-      }), function(errResponse) {
-        console.log("User get error " + (JSON.stringify(errResponse)));
-        $state.go('login');
-        return false;
-      });
-    } else {
-      console.log("User already defined");
-    }
-    console.log("params " + JSON.stringify($location.search().id));
     user_token = window.localStorage.getItem('user_token');
+    console.log("Org Controller");
+    user.get_user().then((function(res) {
+      return $scope.org = window.USER.org;
+    }), function(err) {
+      window.USER = null;
+      return $state.go('login');
+    });
+    console.log("params " + JSON.stringify($location.search().id));
     return $http({
       method: 'GET',
       url: RESOURCES.DOMAIN + "/get-single-org",
@@ -28,10 +23,12 @@ angular.module('subzapp_mobile').controller('OrgController', [
         org_id: $location.search().id
       }
     }).success(function(org) {
-      console.log("Fetched user data " + (JSON.stringify(org)));
+      console.log("Fetched org data " + (JSON.stringify(org)));
+      $scope.teams = org.teams;
       return $scope.org = org;
     }).error(function(err) {
-      return console.log("single org error " + (JSON.stringify(err)));
+      console.log("single org error " + (JSON.stringify(err)));
+      return $state.go('login');
     });
   }
 ]);

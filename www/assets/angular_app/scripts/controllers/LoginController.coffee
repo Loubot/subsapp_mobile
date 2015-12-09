@@ -29,11 +29,12 @@ angular.module('subzapp_mobile').controller('LoginController', [
         window.localStorage.setItem 'user_token', data.token
         window.localStorage.setItem 'user_id', data.user.id
        
-        $state.go 'user'
+        $state.go 'all_org'
         return
       ).error (err) ->
         $('.login_error').show 'slide', { direction: 'right' }, 1000
         $scope.errorMessage = err
+        window.USER = null
         console.log "error!!!!!" + JSON.stringify err
         return
       return

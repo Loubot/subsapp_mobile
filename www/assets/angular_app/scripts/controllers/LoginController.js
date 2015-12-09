@@ -10,12 +10,13 @@ angular.module('subzapp_mobile').controller('LoginController', [
       $http.post(RESOURCES.DOMAIN + "/auth/signin", $scope.login_form_data).success(function(data) {
         window.localStorage.setItem('user_token', data.token);
         window.localStorage.setItem('user_id', data.user.id);
-        $state.go('user');
+        $state.go('all_org');
       }).error(function(err) {
         $('.login_error').show('slide', {
           direction: 'right'
         }, 1000);
         $scope.errorMessage = err;
+        window.USER = null;
         console.log("error!!!!!" + JSON.stringify(err));
       });
     };

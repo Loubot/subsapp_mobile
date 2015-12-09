@@ -6,7 +6,8 @@ html, body {
 body{
   background-color: #337F76 !important;
   width: 100%;
-  word-wrap: break-word
+  word-wrap: break-word;
+  color: #FFF !important;
 }
 
 .banner_container{
@@ -51,21 +52,29 @@ left: -200px;
 }
 /*end of user_page*/
 
-.login_error{
+/* edit user page*/
+.token_container{
+  
+}
+/* end of edit user page*/
+
+.message{
   display: none;
-  background-color: #ff3b3b;
-  /*color: #FFF;*/
-  padding:5px;
 }
 
-.register_error{
-  display: none;
+.success_message{  
+  background-color: #00b100;
+  padding: 5px;
+}
+
+.error_message{
   background-color: #ff3b3b;
   /*color: #FFF;*/
   padding:5px;
 }
 
 .example-animate-container {
+  padding: 0px;
   /*color: #111;*/
   /*background:white;*/
   /*border:1px solid black*/;
@@ -74,8 +83,7 @@ left: -200px;
   /*padding:0 10px;*/
 }
 
-.example-animate-container li {
-  color: #FFF;
+.example-animate-container li {  
   background:white;
   border:1px solid black;
   padding: 5px;
@@ -109,5 +117,5 @@ left: -200px;
 }
 
 .black_text{
-  color: #111;
+  color: #5e5e5e;
 }
