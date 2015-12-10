@@ -31,6 +31,7 @@
         <link rel="stylesheet" type="text/css" href="assets/bower/bootstrap/dist/css/bootstrap.min.css" />
 
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="/lib/ionic/js/ionic.bundle.js"></script>
         
         
         <script type="text/javascript" src="assets/bower/angular/angular.js"></script>
@@ -58,7 +59,14 @@
         <title>SubZapp</title>
     </head>
     <body>
-      <div ng-include="'/assets/angular_app/views/nav/nav.html'" ng-controller="NavController"></div>
+      <!-- <div ng-include="'/assets/angular_app/views/nav/nav.html'" ng-controller="NavController"></div> -->
+      <ion-tabs>
+        <ion-tab title="home">
+          <ion-content>
+            Hello
+          </ion-content>
+        </ion-tab>
+      </ion-tabs>
 
       <div ui-view>
         <!-- angular app injection here -->
