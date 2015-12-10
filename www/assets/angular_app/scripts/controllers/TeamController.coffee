@@ -32,8 +32,8 @@ angular.module('subzapp_mobile').controller('TeamController', [
           team_id: $location.search().id
       ).then ( (res) ->
         console.log "Got team #{ JSON.stringify res }"
+        console.log res
         $scope.team = res.data[0]
-        $scope.events = ['hell;', 'bye']
       ), ( errResponse ) ->
         console.log "Get team error #{ JSON.stringify errResponse }"
 
