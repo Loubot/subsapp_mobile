@@ -24,9 +24,8 @@ angular.module('subzapp_mobile').controller('TeamController', [
         team_id: $location.search().id
       }
     }).then((function(res) {
-      console.log("Got team " + (JSON.stringify(res)));
-      console.log(res);
-      return $scope.team = res.data[0];
+      console.log(res.data.events);
+      return $scope.events = res.data.events;
     }), function(errResponse) {
       return console.log("Get team error " + (JSON.stringify(errResponse)));
     });

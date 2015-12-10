@@ -19,13 +19,13 @@
     <h4>Upcoming events</h4>
     <ul class="example-animate-container">
       <input type="search" ng-model="q" placeholder="filter events..." aria-label="filter friends" class="black_text" />
-      
+      <br>Team members.
       <li class="animate-repeat org_list" ng-repeat="event in events | filter:q as results">
-        <a href="/#/event?id={{ event.id }}" >[{{$index + 1}}] {{event}}.</a><br>
-             
+        <a href="" >[{{$index + 1}}] {{ event.name }}: {{ event.date | date:'dd/MM/yyyy @ h:mma'}}.</a>
+            
       </li>
       <li class="animate-repeat" ng-if="orgs.length == 0">
-        <strong>No results found...</strong>
+        <strong>No members added...</strong>
       </li>
     </ul>
   </div>
