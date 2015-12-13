@@ -10,7 +10,7 @@ angular.module('subzapp_mobile').constant('API', 'api/v1/')
 
 angular.module('subzapp_mobile').config ($stateProvider, $urlRouterProvider) ->
 
-  $urlRouterProvider.otherwise "/"  
+  # $urlRouterProvider.otherwise "/"  
   # login state
   $stateProvider.state "login",
     url : "/"

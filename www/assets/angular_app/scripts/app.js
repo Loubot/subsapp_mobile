@@ -8,7 +8,6 @@ angular.module('subzapp_mobile', ['ngAnimate', 'ui.router', 'ngRoute']);
 angular.module('subzapp_mobile').constant('API', 'api/v1/');
 
 angular.module('subzapp_mobile').config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/");
   $stateProvider.state("login", {
     url: "/",
     templateUrl: 'assets/angular_app/views/login/login.html',
