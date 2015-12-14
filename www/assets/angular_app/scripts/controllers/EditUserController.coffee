@@ -65,5 +65,12 @@ angular.module('subzapp_mobile').controller('EditUserController', [
     $scope.stripe_submit = ->
       console.log 'stripe'
 
+    $scope.add_validation = (e) ->
+      console.log "he hey"
+      t = e.target
+      $(t).addClass('validation')
+      console.log e
+      return true
+
 
 ])

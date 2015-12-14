@@ -64,17 +64,27 @@ angular.module('subzapp_mobile').factory('message', function() {
       $('.message').removeClass('success_message');
       $('.message').addClass('error_message');
       $('.message').text(mes);
-      return $('.message').show('slide', {
+      $('.message').show('slide', {
         direction: 'right'
       }, 1000);
+      return setTimeout((function() {
+        return $('.message').hide('slide', {
+          direction: 'left'
+        }, 1000);
+      }), 50);
     },
     success: function(mes) {
       $('.message').removeClass('error_message');
       $('.message').addClass('success_message');
       $('.message').text(mes);
-      return $('.message').show('slide', {
+      $('.message').show('slide', {
         direction: 'right'
       }, 1000);
+      return setTimeout((function() {
+        return $('.message').hide('slide', {
+          direction: 'left'
+        }, 1000);
+      }), 50);
     }
   };
 });

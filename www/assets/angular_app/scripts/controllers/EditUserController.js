@@ -54,8 +54,16 @@ angular.module('subzapp_mobile').controller('EditUserController', [
         return message.errir(JSON.stringify(errResponse));
       });
     };
-    return $scope.stripe_submit = function() {
+    $scope.stripe_submit = function() {
       return console.log('stripe');
+    };
+    return $scope.add_validation = function(e) {
+      var t;
+      console.log("he hey");
+      t = e.target;
+      $(t).addClass('validation');
+      console.log(e);
+      return true;
     };
   }
 ]);
